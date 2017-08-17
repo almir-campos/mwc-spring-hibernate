@@ -1,0 +1,44 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!--SERIES FIELDS-->
+<spring:message code="label.series.id" var="labelSeriesId" />
+<spring:message code="label.series.description" var="labelSeriesDescription" />
+<spring:message code="label.series.initial.weight" var="labelSeriesInitialWeight" />
+<spring:message code="label.series.goal.weight" var="labelSeriesGoalWeight" />
+<spring:message code="label.series.start.date" var="labelSeriesStartDate" />
+<spring:message code="label.series.estimated.end.date" var="labelSeriesEstimatedEndDate" />
+<spring:message code="label.series.real.end.date" var="labelSeriesRealEndDate" />
+<fieldset>
+    <legend>${labelSeriesShowDataLegend}</legend>
+    <table class="showTable">
+        <tr>
+            <td>${labelSeriesId}</td>
+            <td >${series.id}</td>
+        </tr>
+        <tr>
+            <td>${labelSeriesDescription}</td>
+            <td>${series.description}</td>
+        </tr>
+<!--        <tr>
+            <td>${labelSeriesInitialWeight}</td>
+            <td>${series.initialWeight}</td>
+        </tr>-->
+        <tr>
+            <td>${labelSeriesGoalWeight}</td>
+            <td>${series.goalWeight}</td>
+        </tr>
+        <tr>
+            <td>${labelSeriesStartDate}</td>
+            <td>${series.startDateString}</td>
+        </tr>
+        <tr>
+            <td>${labelSeriesEstimatedEndDate}</td>
+            <td>${series.estimatedEndDateString}</td>
+        </tr>
+<!--        <tr>
+            <td>${labelSeriesRealEndDate}</td>
+            <td>${series.realEndDateString}</td>
+        </tr>-->
+        <tr>
+    </table>
+</fieldset>

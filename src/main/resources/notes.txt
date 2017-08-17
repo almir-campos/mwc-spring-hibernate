@@ -1,0 +1,40 @@
+========= VERSION 0 - DEMO =========
+
+PHASE  1 - OK - Core functionalities
+
+PHASE  2 - OK - Basic i18n - Text Only
+
+PHASE  3 - OK - Security/Access - Current features
+
+PHASE  4 - (OK) - Users, People and Realms Administration
+
+PHASE  5 - (OK) - Security/Validations/Confirmations/i18n (Formatting and new features)
+
+PHASE  5a - Miscellaneous
+
+PHASE  6 - Web Design - Basic
+
+------- FROM THIS POINT THE SYSTEM CAN entrar em produção
+
+PHASE  7 - Revision & Documentation 1
+
+PHASE  8 - Optimization & Refactoring
+
+PHASE  9 - Improvements (business functionalities)
+
+PHASE 10 - Revision & Documentation 2
+
+
+
+========= VERSION 1 - COMMERCIAL =========
+
+PHASE 1 - Web Design Professional
+* Integration 1 - User's app (pay pal, Facebook, Twitter, etc.)
+* Integration 2 - Partners (food, fitness, etc.)
+* Financial control
+* Ads
+* 
+
+=============== WHICH PHASE?
+
+* WebServices

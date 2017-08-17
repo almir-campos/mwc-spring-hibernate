@@ -1,0 +1,104 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!--LABELS-->
+<spring:message code="label_operations" var = "labelOperations" />
+<spring:message code="label_user_list_title" var = "labelUserListTitle" />
+<spring:message code="label_operations" var="labelOperations" />
+<spring:message code="label_operation_delete" var="labelOperationDelete" />
+<spring:message code="label_operation_show" var="labelOperationShow" />
+<spring:message code="label_operation_edit" var="labelOperationEdit" />
+<spring:message code="label_operation_list_series" var="labelOperationListSeries" />
+<spring:message code="label.delete.confirmation" var="labelDeleteConfirmation" />
+<spring:message code="available.options.company.list.branches" var="availableOptionsCompanyListBranches" />
+<spring:message code="available.options.company.add.branch" var="availableOptionsCompanyAddBranch" />
+<spring:message code="available.options.show" var="availableOptionsShow" />
+<spring:message code="available.options.edit" var="availableOptionsEdit" />
+<spring:message code="available.options.branch.list.people" var="availableOptionsBranchListPeople" />
+<spring:message code="available.options.show.series.details" var="availableOptionsBranchShowSeriesDetails" />
+
+<div class='showAvailableOptions'>
+    <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
+        <c:if test="${viewName eq 'companyShow'}">
+            <a href="${ctx}/company/edit/${company.id}">${labelOperationEdit}</a> |
+            <a href="${ctx}/company/listbranches/${company.id}">${availableOptionsCompanyListBranches}</a> |
+            <a href="${ctx}/branch/add/${company.id}">${availableOptionsCompanyAddBranch}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'companyEdit'}">
+            <a href="${ctx}/company/show/${company.id}">${labelOperationShow}</a>&nbsp;|
+            <a href="${ctx}/branch/add/${company.id}">${availableOptionsCompanyAddBranch}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'peopleList'}">
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'branchEdit'}">
+            <a href="${ctx}/branch/show/${branch.id}">${availableOptionsShow}</a>
+            <br />
+        </c:if>
+        <c:if test="${viewName eq 'branchShow'}">
+            <a href="${ctx}/branch/edit/${branch.id}">${availableOptionsEdit}</a>
+            <a href='${ctx}/branch/listpeople/${branch.id}'>${availableOptionsBranchListPeople}</a>
+            <br />
+        </c:if>
+        <c:if test="${viewName eq 'branchList'}">
+            <a href="${ctx}/branch/add/${company.id}">${availableOptionsCompanyAddBranch}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'personShow'}">
+            <c:if test='${person.id ne loggedUser.person.id}'>
+                <a href="#" onclick="confirmDelete('/person/delete/${person.id}');">${labelOperationDelete}</a> |
+            </c:if>
+            <a href="${ctx}/person/edit/${person.id}">${labelOperationEdit}</a> |
+            <a href="${ctx}/mwcUser/listseries/${person.user.id}">${labelOperationListSeries}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'personEdit'}">
+            <c:if test='${person.id ne loggedUser.person.id}'>
+                <a href="#" onclick="confirmDelete('/person/delete/${person.id}');">${labelOperationDelete}</a> |
+            </c:if>
+            <a href="${ctx}/person/show/${person.id}">${labelOperationShow}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'userShow'}">
+            <c:if test='${mwcUser.person.id ne loggedUser.person.id}'>
+                <a href="#" onclick="confirmDelete('/mwcUser/delete/${mwcUser.id}');">${labelOperationDelete}</a> |
+            </c:if>
+            <a href="${ctx}/mwcUser/edit/${mwcUser.id}">${labelOperationEdit}</a>
+            <br />
+        </c:if>
+        <c:if test="${viewName eq 'userEdit'}">
+            <a href="${ctx}/mwcUser/show/${mwcUser.id}">${labelOperationShow}</a>
+            <br />
+        </c:if>
+
+        <c:if test="${viewName eq 'seriesShow'}">
+            <a href="${ctx}/series/edit/${series.id}">${labelOperationEdit}</a> |
+            <a href="${ctx}/series/details/${series.id}">${availableOptionsShowSeriesDetails}(i18n)Details</a>
+            <br />
+        </c:if>
+        <c:if test="${viewName eq 'seriesEdit'}">
+            <a href="${ctx}/series/show/${series.id}">${labelOperationShow}</a>
+            <br />
+        </c:if>
+    </sec:authorize>
+    <c:if test="${viewName eq 'seriesList'}">
+        <a href="${ctx}/series/add/${userId}">${availableOptionsAddSeries}(i18n)Add Series</a>
+    </c:if>
+</div>
+
+<script type="text/javascript" language="javascript">
+    function confirmDelete(url)
+    {
+        if (confirm("${labelDeleteConfirmation}"))
+        {
+            window.location.href = "${ctx}" + url;
+        }
+    }
+</script>

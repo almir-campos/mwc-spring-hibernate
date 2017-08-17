@@ -1,0 +1,74 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!--LABELS-->
+<spring:message code="label.series.edit.legend.basic.data" var="labelSeriesEditLegendBasicData" />
+<spring:message code="label.series.id" var="labelSeriesId" />
+<spring:message code="label.series.description" var="labelSeriesDescription" />
+<spring:message code="label.series.initial.weight" var="labelSeriesInitialWeight" />
+<spring:message code="label.series.goal.weight" var="labelSeriesGoalWeight" />
+<spring:message code="label.series.start.date" var="labelSeriesStartDate" />
+<spring:message code="label.series.estimated.end.date" var="labelSeriesEstimatedEndDate" />
+<spring:message code="label.series.real.end.date" var="labelSeriesRealEndDate" />
+<spring:message code="label.series.initial.photo" var="labelSeriesInitialPhoto" />
+<!--MISC MESSAGES-->
+<spring:message code="label.confirm.button" var = "labelConfirmButton" />
+<div>
+
+    <fieldset>
+        <legend>${labelSeriesEditLegendBasicData}</legend>
+        <table class="formTable">
+            <tr>
+                <td>${labelSeriesId}</td>
+                <td>${series.id}</td>
+                <input name="id" type="hidden" value="${series.id}" />
+            </tr>
+            <tr>
+                <td>${labelSeriesDescription}</td>
+                <td><form:input path="description" id="description" value='${series.description}'/></td>
+            <td><form:errors path="description" cssClass="formErrorMessage" /></td>
+            </tr>
+<!--            <tr>
+                <td>${labelSeriesInitialWeight}</td>
+                <td>
+            <form:input path="initialWeight" id="initialWeight" value='${series.initialWeight}'/>
+            </td>
+            <td><form:errors path="initialWeight" cssClass="formErrorMessage" /></td>
+            </tr>-->
+            <tr>
+                <td>${labelSeriesGoalWeight}</td>
+                <td>
+                    <!--<input id="goalWeightFormatted" value='' />-->
+            <form:input path="goalWeight" id="goalWeight" value='${series.goalWeight}'/>
+            </td>
+            <td><form:errors path="goalWeight" cssClass="formErrorMessage" /></td>
+            </tr>
+            <tr>
+                <td>${labelSeriesStartDate}</td>
+                <td><form:input path="startDate" id="startDate" value='${series.startDateString}' cssClass="inputDate" /></td>
+            <td><form:errors path="startDate" cssClass="formErrorMessage" /></td>
+            </tr>
+            <tr>
+                <td>${labelSeriesEstimatedEndDate}</td>
+                <td><form:input path="estimatedEndDate" id="estimatedEndDate" value='${series.estimatedEndDateString}' cssClass="inputDate" /></td>
+            <td><form:errors path="estimatedEndDate" cssClass="formErrorMessage" /></td>
+            </tr>
+<!--            <tr>
+                <td>${labelSeriesRealEndDate}</td>
+                <td><form:input path="realEndDate" id="realEndDate" value='${series.realEndDateString}' cssClass="inputDate" /></td>
+            <td><form:errors path="realEndDate" cssClass="formErrorMessage" /></td>
+            <tr/>-->
+        </table>
+    </fieldset>
+    <!--        <fieldset>
+                <legend>${labelSeriesInitialPhoto}</legend>
+                <input id="photoInput" type="file" name="file"/>
+            </fieldset>-->
+</div>
+<%--<%@ include file = "../includes/ajaxWait.jspf" %>--%>
+<script>
+//    $("#initialWeightFormatted").maskNumberInput("en_US", $("#initialWeight"), 1);
+//    $("#goalWeightFormatted").maskNumberInput("en_US", $("#goalWeight"), 1);
+
+    
+
+</script>

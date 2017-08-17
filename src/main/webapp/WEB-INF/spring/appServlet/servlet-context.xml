@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+    xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <annotation-driven />
+	
+    <resources mapping="/resources/**" location="/,classpath:/js/,/resources/" />
+	
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+    </beans:bean>
+        
+    <beans:bean
+        id="multipartResolver"
+        class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	
+    <interceptors>
+        <beans:bean
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+            p:paramName="lang" />
+    </interceptors>
+    
+    <beans:bean 
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <beans:property name="locations">
+            <beans:list>
+                <beans:value>file://${MWC_CONFIG}</beans:value>
+                <!--<beans:value>file://${MWC_DB}</beans:value>-->
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+    <beans:bean
+        id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+        p:basenames="
+            WEB-INF/i18n/about,
+            WEB-INF/i18n/aboutMe,
+            WEB-INF/i18n/aboutPage,
+            WEB-INF/i18n/aboutSystem,
+            WEB-INF/i18n/application,
+            WEB-INF/i18n/errorMessages,
+            WEB-INF/i18n/inputOutputFormLabels,
+            WEB-INF/i18n/menuMessages,
+            WEB-INF/i18n/messages,
+            WEB-INF/i18n/miscMessages,
+            WEB-INF/i18n/validationMessages,
+            WEB-INF/i18n/pageLabelsAndMessages"
+        p:fallbackToSystemLocale="false" />
+	
+    <beans:bean
+        id="localeResolver"
+        class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+        p:cookieName="MWC_locale"
+        p:cookiePath="/mwc/"/>
+    
+<!--    <beans:bean id="springUser" class="com.javasd.mwc.util.misc.SpringUser" />
+    <beans:bean id="loggedUser" class="com.javasd.mwc.util.misc.LoggedUser"/>-->
+    <!--<beans:bean id="objectFiller" class="com.javasd.mwc.util.beans.ObjectFiller"/>-->
+ 
+    <context:component-scan 
+        base-package="
+            com.javasd.mwc.aop.advice,
+            com.javasd.mwc.DOMAIN,
+            com.javasd.mwc.SERVICE,
+            com.javasd.mwc.REPOSITORY,
+            com.javasd.mwc.util.beans,
+            com.javasd.mwc.WEB.CONTROLLER,
+            " />
+
+    <!--AOP CONFIGURATION-->
+    <aop:aspectj-autoproxy />
+    
+</beans:beans>

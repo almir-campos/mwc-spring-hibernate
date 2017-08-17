@@ -1,0 +1,153 @@
+MANDATORY TO PUBLISH THE WEB SYSTEM
+================================================================
+* Target End Date: 2014+
+
+* Available Options
+-- Branch/List People -> Add person to a branch (add "add" option to all lists! - "Operations (or 'Add')
+
+* i18n
+-- Email invitation
+-- Email activation
+-- Email reset password
+
+* Find the '(i18n)' tag.
+
+* About: Firefox/FireBug, Pivotal Tracker, Agile, etc.
+
+* IE10 - Problem when adding series detail
+
+* If Admin, should can add person to a branch even if the admin don't have company.
+
+* Access code - in the list
+
+================================================================
+ALMOST MANDATORY
+
+* target date vs estimated end date
+* OK - Password encryption
+* XML and JSON responses (for the technical end-user)
+* List users
+* Verify access code: message if invalid (i18n)
+* All(?) methods for the GenericMenu don't need parameters, because they are used by the loggedUser!!!
+* Generic Menu (review considering the realm access control)
+* "isManagedByTheLoggedUser" in personBasicData
+* Cancel account
+* Validations - to complete/padronize, to review the logic
+* loggedUser is sent to view (?????) 
+* loggedUserBasicData - to be used by all internal pages
+* List people in the branch - the manager should not remove or edit.
+* Change password
+* Avoid NullPointException (specially when the system is accessed directly from the url)
+* Not found page - layout
+* Disclaimer agreement date
+* Show and change Person roles only if the person is not a User.
+* Logout - who?
+* Remove start date from series
+* More properties depending on the environment: internet addresses for the links.
+* Default e-mail address for system messages
+
+
+OPTIONALS (group by: error, new feature, logic completion, organizing code, etc)
+
+--- Requirements/Logic Completion ---
+
+* Browse File - i18n
+* Validation logic involving dates (initial, final, current, etc.)
+* Series details - basic validations
+* Documentation online?
+* Remove user (self remove)
+* Date verification on the server side based on pattern
+* Email verification on the server side based on pattern
+* i18n Enum fields
+* Phone verification on the server side based on pattern (digits only)
+* Upload file size
+* Ask before remove
+* limit the number of the loaded "children"
+* Check "null" password
+
+
+--- Code Organizing ---
+
+* Organize/Review CRUD MwcUser - MwcUserController
+* Organize tags inside <head> tag
+* Convert to "include" some sections under "<head>"
+* Change some codes from controller to service or repository
+* Remove not used variables
+* Messages move/change the old keys
+* DefaultMessageSourceResolvable in MwcUserController/Edit
+* Substitute "ajaxWaitPlease" to "ajaxWait" (and reconf button)
+* leftPanelDiv: substitute to an "include"
+* Rename classes to distinguish between "action classes" and "styling classes".
+* Check MwcUser/Edit -> Technique for "out" and "in" classes. Could it be a pattern?
+* Role vs Realm - Roles -> Objects; Realm -> Class; "Does this user have access to this object? (Role)"; No. Denied. Yes. "Does this user have access to these data? (realm)". No. Denied. Yes. Proceed. Use this order: Role first; realm, last.
+* Check the variables that are sent to the model from the controller. Are they being used? If not, why? If yes, could them be substituted for another one that already exists in the view?
+
+--- New Features/User 
+
+* clear log
+* util - clean the cookies (specially in accessDenied page)
+* Alert message in locale changing
+* Guest user (admin)
+* Missing data in the forms and displays
+* Questions that can be useful to the final user
+-- Am I gaining weight?
+-- Am I loosing weight?
+-- How long it will take to achieve my goal?
+-- Idem, but considering only the N last measurements?
+* Exclude measurement from calculation.
+* Mean weight, mean loss - from the begin, from the last N days
+* How should be the mean loss to achieve the goal ( weight & date );
+* Error page - based on Spring ExceptionHandler
+* More than one measure in the same day - sequential #
+* Series details - datepicker in the edit, validations
+* Review navigation rules (from / to )
+* Send e-mail messages to managed people
+* See the data of the managed people of your managed people.
+* Register the type of food the user ate - the system can say: "Everytime you ate (food & amount), you loss/gain weight".
+* Register the type of activity the user did - "Everytime you did the activity ( activity & duration) you loss/gain weight."
+* Register important dates that can change the weight of the user: parties and other events
+* split a series in two series
+* copy a series to a new one
+* Chart for desired gain/loss (line from the beginning to the end).
+* Comparisons - current x real, etc.
+* Motivational sentences
+* How many days with the same weight are enough to consider that the goal is achieved?
+* What is the "variation" allowed to consider the goal achieved?
+* Type of series: gain/loss, maintenance
+* What to do when:
+-- currentDate < measurementDate
+-- currentDate > targeDate
+-- measurement > Goal (on type "Gain")
+-- measurement < Goal (on type "Loss")
+
+* Admin notes about a person.
+* Manager notes about a person
+
+--- New Features/Internal
+
+* Role AUDIT (to receive the automatic e-mails)
+* Spring Session Management
+* Activation date
+* Sign Up date
+* Config the max number of managed people per user
+* An user cannot edit/delete his/her manager even the user is as admin (this is to avoid edit/remove the first admin: me).
+* Email the superadmin when an server error occur
+* Scheduled tasks: report user inactivity
+* Cache management (Hibernate)
+* Control always from server
+-- The front-end could receive a complementary message (error, warning, info): code + description. (package = data + complementary message(s) )
+-- For example: measurement > goal (type "Gain")
+-- The front-end is free to do what he wants with the information
+* Only one (?) properties file for configurations by environment variable (see servlet-context.xml)
+-- url
+-- database
+
+
+--- Other
+
+* The cost of using cookies was too high, specially when using AOP, because we have to pass the HttpServletResponse as parameter
+
+* Learn vocabulary about weight control
+
+* Paid plan:
+-- Unlimited managed people

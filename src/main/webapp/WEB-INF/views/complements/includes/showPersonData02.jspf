@@ -1,0 +1,35 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<fieldset>
+    <legend>Person Data</legend>
+    <table class="showTable">
+        <tr>
+            <td>Id</td>
+            <td>${person.id}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>${person.firstName}&nbsp;${person.lastName}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>${person.email}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>${person.phone}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>${person.status}</td>
+        </tr>
+        <tr>
+            <td>Access Code</td>
+            <td>${person.accessCode}</td>
+        </tr>
+        <tr>
+            <td>Access Code<br />Type</td>
+            <td>${person.accessCodeType}</td>
+        </tr>
+    </table>
+</fieldset>

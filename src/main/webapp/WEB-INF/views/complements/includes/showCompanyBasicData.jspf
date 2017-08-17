@@ -1,0 +1,24 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!--LABELS-->
+<spring:message code="label.company.legend.basic.data" var = "labelCompanyLegendBasicData" />
+<spring:message code="label.company.id" var = "labelCompanyId" />
+<spring:message code="label.company.acronym" var = "labelCompanyAcronym" />
+<spring:message code="label.company.name" var = "labelCompanyName" />
+<fieldset>
+    <legend>${labelCompanyLegendBasicData}</legend>
+    <table class="showTable">
+        <tr>
+            <td>${labelCompanyId}</td>
+            <td>${company.id}</td>
+        </tr>
+        <tr>
+            <td>${labelCompanyAcronym}</td>
+            <td>${company.acronym}</td>
+        </tr>
+        <tr>
+            <td>${labelCompanyName}</td>
+            <td>${company.name}</td>
+        </tr>
+    </table>
+</fieldset>

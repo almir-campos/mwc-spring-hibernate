@@ -1,0 +1,29 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<spring:message code="wait.message" var="waitMessage" /> 
+<div id="pleaseWaitDialogDiv" class="pleaseWaitDialog" style="display: none;">
+    ${waitMessage}<br />
+    <img src="${ctx}/resources/images/loader.gif"/>
+</div>
+<div id="ajaxErrorDialogDiv" style="display:none;">Error</div>
+<script>
+    $(".confirmSubmit").click(function()
+    {
+        var formId = "#" + $(this).attr("formId");
+//        alert( formId );
+        $("#pleaseWaitDialogDiv").dialog(
+                {
+                    dialogClass: 'pleaseWaitDialog',
+                    resizable: false,
+                    draggable: false,
+                    modal: true,
+                    open: function()
+                    {
+                        if (formId.length > 1)
+                        {
+                            $(formId).submit();
+                        }
+                    }
+                });
+    });
+</script>

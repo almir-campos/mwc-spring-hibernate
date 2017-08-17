@@ -1,0 +1,34 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div id="topBar" class="topBar">
+    <div class="systemShortInfo">My Weight Control 1.1.1-BETA - Prototype</div>
+    <div class="changeLanguage">
+        <img 
+            src='${ctx}/resources/images/flags/br.gif'
+            style='cursor: pointer; float: left; margin-right: 5px;'
+            class="localeFlag"
+            id="pt_BR" />
+        <img 
+            src='${ctx}/resources/images/flags/us.gif' 
+            style='cursor: pointer; float: left; margin-left: 5px;' 
+            class="localeFlag"
+            id="en_US" />
+    </div>
+    <script>
+        var locale = $.cookie("MWC_locale");
+        if (!locale)
+        {
+            locale = "en_US";
+        }
+        //alert( 'before add class: ' + locale );
+        $("#" + locale).addClass("flagShadow");
+
+        $(".localeFlag").click(function()
+        {
+            locale = $(this).attr("id");
+            //alert( 'before remove class' );
+            $(".localeFlag").removeClass("flagShadow");
+            changeLocale(locale, "", "${currentId}");
+        });
+    </script>
+</div>

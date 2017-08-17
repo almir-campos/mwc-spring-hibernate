@@ -1,0 +1,28 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<spring:message code="label.branch.legend.basic.data" var="labelBranchLegendBasicData" />
+<spring:message code="label.branch.id" var="labelBranchId" />
+<spring:message code="label.branch.acronym" var="labelBranchAcronym" />
+<spring:message code="label.branch.name" var="labelBranchName" />
+<spring:message code="label.branch.zip.code" var="labelBranchZipCode" />
+<fieldset>
+    <legend>${labelBranchLegendBasicData}</legend>
+    <table class="showTable">
+        <tr>
+            <td>${labelBranchId}</td>
+            <td>${branch.id}</td>
+        </tr>
+        <tr>
+            <td>${labelBranchAcronym}</td>
+            <td>${branch.acronym}</td>
+        </tr>
+        <tr>
+            <td>${labelBranchName}</td>
+            <td>${branch.name}</td>
+        </tr>
+        <tr>
+            <td>${labelBranchZipCode}</td>
+            <td>${branch.zipCode}</td>
+        </tr>
+    </table>
+</fieldset>

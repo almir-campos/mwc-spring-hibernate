@@ -1,0 +1,104 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<spring:message code="label.user.id" var="labelUserId" />
+<spring:message code="label.user.display.name" var="labelUserDisplayName" />
+<spring:message code="label.user.roles" var="labelUserRoles" />
+<fieldset>
+    <legend>${labelUserEditLegendIdentification}</legend>
+    <table class="formTable">
+        <tr>
+            <td>${labelUserId}</td>
+            <td>${mwcUser.id}</td>
+        </tr>
+        <tr>
+            <td>${labelUserDisplayName}</td>
+            <td>
+                <div>
+                    <input id="displayName" path="displayName" value='${mwcUser.displayName}'/>
+                    <button style="float:right;" id="updateIdentificationBt">${labelUserEditUpdateIdentificationButton}</button>
+                </div>
+            </td>
+            <td>
+                <span class="formErrorMessage" id="displayNameError"><span>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ${labelUserRoles}
+                            </td>
+                            <td>
+                                <!--<select id="role" name="role">-->
+                        <c:forEach items="${mwcUser.roles}" var="role">
+                            <c:if test="${role.code eq 'ROLE_USER'}">                                              
+                                <input checked disabled type="checkbox" class="roles" value="${role.code}">${role.description}</input><br />
+                            </c:if>
+                            <c:if test="${role.code ne 'ROLE_USER'}">                                              
+                                <c:if test="${role.active}">
+                                    <input checked type="checkbox" class="roles" value="${role.code}">${role.description}</input><br />
+                                </c:if>
+                                <c:if test="${not role.active}">
+                                    <input type="checkbox" class="roles" value="${role.code}">${role.description}</input><br />
+                                </c:if>
+                            </c:if>
+                        </c:forEach>
+                        <!--</select>-->
+                        </td>
+                        </tr>
+                        </table>
+
+                        </fieldset>
+                        <script>
+                            $("#updateIdentificationBt").click(function()
+                            {
+                                $.ajax(
+                                        {
+                                            url: "<c:url value='/mwcUser/updateMwcUserBasicData' />",
+                                            type: "POST",
+                                            beforeSend: function()
+                                            {
+                                                $("#pleaseWaitDialogDiv").dialog(
+                                                        {
+                                                            dialogClass: 'pleaseWaitDialog',
+                                                            resizable: false,
+                                                            draggable: false,
+                                                            modal: true
+                                                        });
+                                            },
+                                            data:
+                                                    {
+                                                        mwcUserId: ${mwcUser.person.id},
+                                                        displayName: $("#displayName").val(),
+                                                        rolesArr: rolesArr
+                                                    },
+                                            success: function(returnMessage)
+                                            {
+                                                $("#pleaseWaitDialogDiv").dialog('close');
+                                                if (returnMessage)
+                                                {
+                                                    $("#displayNameError").text(returnMessage);
+                                                }
+                                                else
+                                                {
+                                                    $("#displayNameError").empty();
+                                                }
+                                                //window.location.href = "<c:url value='/mwcUser/show/'/>" + ${mwcUser.id};
+                                            },
+                                            error: function()
+                                            {
+                                                $("#pleaseWaitDialogDiv").dialog('close');
+                                                $("#ajaxErrorDialogDiv").dialog();
+                                            }
+                                        });
+                            });
+
+                            function rolesArr()
+                            {
+                                var roles_arr = new Array();
+                                $(".roles:checked").each(function()
+                                {
+                                    roles_arr.push($(this).val())
+                                });
+                                //alert( roles_arr );
+                                return roles_arr;
+                            }
+                        </script>

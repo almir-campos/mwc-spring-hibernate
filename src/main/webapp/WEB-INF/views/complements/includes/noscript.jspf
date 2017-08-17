@@ -1,0 +1,6 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<noscript>
+<style>body{display:none}</style>
+<meta http-equiv="refresh" content="0; url=${pageContext.request.servletContext.contextPath}/public/nojavascript">
+</noscript>

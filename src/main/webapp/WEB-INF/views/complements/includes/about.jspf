@@ -1,0 +1,25 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<c:set var="aboutTheSystem">
+    <span class="aboutTitle"><spring:message code="about.system.title"/></span><br /> 
+</c:set>
+<c:set var="aboutMe">
+    <span class="aboutTitle"><spring:message code="about.me.title"/></span><br />
+    <ul>
+        <li><spring:message code="about.me.01" /></li>
+    </ul>
+</c:set>
+<div id="aboutDiv">
+    <button id='showPageInfoBt' onclick="showHide('aboutPageDiv', 'showPageInfoBt', 'Show Page Info', 'Hide Page Info');">Show Page Info</button>
+    <button id='showSystemInfoBt' onclick="showHide('aboutSystemDiv', 'showSystemInfoBt', 'Show System Info', 'Hide System Info');">Show System Info</button>
+    <button id='showAboutMeBt' onclick="showHide('aboutMeDiv', 'showAboutMeBt', 'Show About Me Info', 'Hide About Me Info');">Show About Me Info</button>
+    <div id="aboutPageDiv" class="aboutPage" style="display: none;">
+        ${aboutThePage}
+    </div>
+    <div id="aboutSystemDiv" class="aboutSystem" style="display: none;">
+        ${aboutTheSystem}
+    </div>
+    <div id="aboutMeDiv" class="aboutMe" style="display: none;">
+        ${aboutMe}
+    </div>
+</div>

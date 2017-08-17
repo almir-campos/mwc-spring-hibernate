@@ -1,0 +1,54 @@
+<%@ page pageEncoding="UTF-8" %>
+<spring:message code="label.person.show.legend.basic.data" var="labelPersonShowLegendBasicData" />
+<spring:message code="label.person.id" var="labelPersonId" />
+<spring:message code="label.person.name" var="labelPersonName" />
+<spring:message code="label.person.email" var="labelPersonEmail" />
+<spring:message code="label.person.phone" var="labelPersonPhone" />
+<spring:message code="label.person.status" var="labelPersonStatus" />
+<spring:message code="label.person.manager" var="labelPersonManager" />
+<spring:message code="label.person.birthdate" var="labelPersonBirthdate" />
+<spring:message code="label.user.display.name" var="labelUserDisplayName" />
+<fieldset>
+    <legend>${labelPersonShowLegendBasicData}</legend>
+    <!--<legend>${person.firstName}&nbsp;${person.lastName}</legend>-->
+    <table class="showTable">
+        <tr>
+            <td>${labelPersonId}</td>
+            <td>${person.id}</td>
+        </tr>
+        <tr>
+            <td>${labelPersonName}</td>
+            <td>${person.firstName}&nbsp;${person.lastName}</td>
+        </tr>
+        <tr>
+            <td>${labelPersonStatus}</td>
+            <td>${person.status}</td>
+        </tr>
+        <tr>
+            <td>${labelPersonManager}</td>
+            <td>${person.manager.firstName} ${person.manager.lastName}</td>
+        </tr>
+<!--        <tr>
+            <td>${labelPersonName}</td>
+            <td class='mainInfo'>${person.firstName}&nbsp;${person.lastName}</td>
+        </tr>-->
+<!--        <tr>
+            <td>${labelUserDisplayName}</td>
+            <td>
+                ${person.user.displayName}
+            </td>
+        </tr>-->
+        <tr>
+            <td>${labelPersonEmail}</td>
+            <td>${person.email}</td>
+        </tr>
+        <tr>
+            <td>${labelPersonPhone}</td>
+            <td>${person.phone}</td>
+        </tr>
+        <tr>
+            <td>${labelPersonBirthdate}</td>
+            <td>${person.birthDateString}</td>
+        </tr>
+    </table>
+</fieldset>
