@@ -1,4 +1,4 @@
-# MWC - My Weight Control (with Java, Spring, Hibernate, AOP, and many others)
+# MWC - My Weight Control (with Java, Spring, Hibernate, AOP, and others)
 
 
 
