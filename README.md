@@ -6,7 +6,7 @@ You understand and agree that this system:
 
     - is only a PROTOTYPE using programming techniques, technology and resources such as JavaEE, Spring, Hibernate, etc.
     - is subject to errors, because it is still under development.
-    - was created in 2014 FOR DEMONSTRATION PURPOSES ONLY and DOESN'T uses the best development architecture.
+    - was created in 2014 FOR DEMONSTRATION PURPOSES ONLY and DOESN'T use the best development architecture.
     - will be used as an example of migration from Monolith to Java Microservices in a future training.
     - will not send unsolicited e-mails to users. E-mails are sent only in response to an explicit request by the user.
 
